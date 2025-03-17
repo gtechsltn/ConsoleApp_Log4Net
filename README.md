@@ -1,6 +1,9 @@
 # ConsoleApp and Log4Net Sample
-
 * Handle exeption that log4net write to file that no more free space
+* What <maxSizeRollBackups value="-1" /> this mean?
+* What <maxSizeRollBackups value="5" /> this mean?
+
+# A. Handle exeption that log4net write to file that no more free space
 
 If log4net is writing logs to a file and runs into a "No more free space" error, you can handle this exception gracefully by configuring log4net to detect such errors and take appropriate action. Here's how you can do it:
 
@@ -106,3 +109,50 @@ if (!IsDiskSpaceAvailable("C", 50 * 1024 * 1024)) // 50MB threshold
 ```
 
 This ensures that logging stops before the disk is completely full.
+
+With these strategies, you can handle low disk space errors effectively while ensuring log4net behaves gracefully when encountering such issues. 🚀
+
+# What <maxSizeRollBackups value="-1" /> this mean?
+
+The <maxSizeRollBackups value="-1" /> setting in log4net's RollingFileAppender means "unlimited backup log files."
+
+**Explanation**
+
+maxSizeRollBackups controls how many old log files are kept when rolling occurs due to size or date.
+
+When set to -1, log4net will not delete any old log files, allowing an unlimited number of backups.
+
+This means that as logs grow, old logs will keep accumulating indefinitely, which may lead to disk space issues if not monitored.
+
+Example:
+```
+<appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="logs/app.log" />
+    <appendToFile value="true" />
+    <rollingStyle value="Size" />
+    <maxSizeRollBackups value="-1" />
+    <maximumFileSize value="10MB" />
+    <staticLogFileName value="true" />
+    <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+</appender>
+```
+
+**Potential Issues**
+
+Over time, this can fill up the disk if logs grow continuously.
+
+If you don't want unlimited logs, set a specific number, such as 5 (keeps the last 5 backups).
+
+Better Alternative
+
+To prevent disk space issues, limit the number of backups:
+
+```
+<maxSizeRollBackups value="5" />
+```
+
+This keeps only the last 5 log files, deleting older ones automatically.
+
+Would you like help setting up a log cleanup strategy? 🚀
