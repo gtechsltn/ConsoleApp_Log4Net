@@ -1,7 +1,7 @@
 # ConsoleApp and Log4Net Sample
 * Handle exeption that log4net write to file that no more free space
-* What <maxSizeRollBackups value="-1" /> this mean?
-* What <maxSizeRollBackups value="5" /> this mean?
+* What ```<maxSizeRollBackups value="-1" />``` this mean?
+* What ```<maxSizeRollBackups value="5" />``` this mean?
 
 # A. Handle exeption that log4net write to file that no more free space
 
