@@ -156,3 +156,11 @@ To prevent disk space issues, limit the number of backups:
 This keeps only the last 5 log files, deleting older ones automatically.
 
 Would you like help setting up a log cleanup strategy? 🚀
+
+# References
+* https://github.com/gtechsltn/NET9_SecureWebApp
+* https://github.com/gtechsltn/NET48_WinSvc_DataExport
+* https://github.com/gtechsltn/SqlCommandTimeout
+* https://github.com/gtechsltn/ConsoleApp_Log4Net
+* https://github.com/gtechsltn/SqlServerInsertFiles
+* https://github.com/gtechsltn/ConsoleApp_SharpZipLib
