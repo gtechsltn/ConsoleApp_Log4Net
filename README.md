@@ -3,6 +3,69 @@
 * What ```<maxSizeRollBackups value="-1" />``` this mean?
 * What ```<maxSizeRollBackups value="5" />``` this mean?
 
+# Web.config or App.config
+```
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+  </configSections>
+
+  <system.diagnostics>
+    <trace autoflush="true">
+      <listeners>
+        <add name="textWriterTraceListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="logs\log4net.trace.txt" />
+      </listeners>
+    </trace>
+  </system.diagnostics>
+  <log4net>
+    <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger [%ndc] &lt;%property{auth}&gt; - %message%newline" />
+      </layout>
+    </appender>
+    <appender name="DailyRollingFileAppender" type="log4net.Appender.RollingFileAppender">
+      <threshold value="ALL" />
+      <file value="logs\traceroll.day.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyyMMdd" />
+      <maximumFileSize value="10MB" />
+      <maxSizeRollBackups value="-1" />
+      <CountDirection value="1" />
+      <preserveLogFileNameExtension value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="[${COMPUTERNAME}] %d{ISO8601} %6r %-5p [%t] %c{2}.%M() - %m%n" />
+      </layout>
+    </appender>
+    <root>
+      <!-- ALL, DEBUG, INFO, WARN, ERROR, FATAL, OFF -->
+      <level value="ALL" />
+      <appender-ref ref="ConsoleAppender" />
+      <appender-ref ref="DailyRollingFileAppender" />
+    </root>
+  </log4net>
+```
+
+# Program.cs
+```
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+
+        public static void Main(string[] args)
+        {
+            //====================================================================================================
+            log4net.Config.XmlConfigurator.Configure();
+            //====================================================================================================
+            log.Info("Hello World");
+        }
+    }
+}
+```
+
 # A. Handle exeption that log4net write to file that no more free space
 
 If log4net is writing logs to a file and runs into a "No more free space" error, you can handle this exception gracefully by configuring log4net to detect such errors and take appropriate action. Here's how you can do it:
