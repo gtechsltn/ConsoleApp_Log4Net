@@ -3,6 +3,18 @@
 * What ```<maxSizeRollBackups value="-1" />``` this mean?
 * What ```<maxSizeRollBackups value="5" />``` this mean?
 
+# packages.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Dapper" version="2.0.123" targetFramework="net48" />
+  <package id="Dapper.Contrib" version="2.0.78" targetFramework="net48" />
+  <package id="Dapper.FastCrud" version="3.1.46" targetFramework="net48" />
+  <package id="log4net" version="3.0.4" targetFramework="net48" />
+  <package id="Newtonsoft.Json" version="13.0.3" targetFramework="net48" />
+</packages>
+```
+
 # Web.config or App.config
 ```
   <configSections>
