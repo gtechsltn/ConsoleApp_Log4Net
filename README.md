@@ -8,9 +8,9 @@
 To enable C# language version preview features in Visual Studio, you need to set the LangVersion property in your project file (usually .csproj) to "preview". 
 
 ```
- <PropertyGroup>
-   <LangVersion>preview</LangVersion>
- </PropertyGroup>
+<PropertyGroup>
+    <LangVersion>preview</LangVersion>
+</PropertyGroup>
  ```
 
 # packages.config
