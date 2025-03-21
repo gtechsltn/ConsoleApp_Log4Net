@@ -20,7 +20,13 @@
   <configSections>
     <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
   </configSections>
-
+  <connectionStrings>
+    <add name="DBConnectionString" connectionString="Data Source=.;Initial Catalog=mssql;Integrated Security=SSPI;Connect Timeout=30;Pooling=True;Max Pool Size=10;" />
+  </connectionStrings>
+  <appSettings>
+    <!-- Minimum free space for C drive in megabyte: required to run log4net -->
+    <add key="MinFreeDiskSpaceInMB" value="0|50" />
+  </appSettings>
   <system.diagnostics>
     <trace autoflush="true">
       <listeners>
