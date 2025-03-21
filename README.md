@@ -3,7 +3,7 @@
 * What ```<maxSizeRollBackups value="-1" />``` this mean?
 * What ```<maxSizeRollBackups value="5" />``` this mean?
 
-# packages.xml
+# packages.config
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <packages>
