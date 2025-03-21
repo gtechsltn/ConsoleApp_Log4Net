@@ -15,7 +15,7 @@
 </packages>
 ```
 
-# Web.config or App.config
+# app.config
 ```
   <configSections>
     <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
