@@ -3,6 +3,16 @@
 * What ```<maxSizeRollBackups value="-1" />``` this mean?
 * What ```<maxSizeRollBackups value="5" />``` this mean?
 
+# Enable C# language version preview features
+
+To enable C# language version preview features in Visual Studio, you need to set the LangVersion property in your project file (usually .csproj) to "preview". 
+
+```
+ <PropertyGroup>
+   <LangVersion>preview</LangVersion>
+ </PropertyGroup>
+ ```
+
 # packages.config
 ```
 <?xml version="1.0" encoding="utf-8"?>
