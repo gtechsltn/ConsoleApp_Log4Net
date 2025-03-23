@@ -255,3 +255,4 @@ Would you like help setting up a log cleanup strategy? 🚀
 * https://github.com/gtechsltn/ConsoleApp_Log4Net
 * https://github.com/gtechsltn/SqlServerInsertFiles
 * https://github.com/gtechsltn/ConsoleApp_SharpZipLib
+* https://github.com/gtechsltn/ConsoleApp_CheckNull
